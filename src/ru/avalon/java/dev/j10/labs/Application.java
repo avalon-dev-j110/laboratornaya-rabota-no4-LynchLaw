@@ -1,11 +1,14 @@
 package ru.avalon.java.dev.j10.labs;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Date;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         /*
          * TODO(Студент): Проинициализируйте массив strings
          *
@@ -34,27 +37,30 @@ public class Application {
 	     * 2. Проинициализируйте массив persons 20
 	     *    экземплярыми созданного класса.
 	     */
+
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd MM yyyy");
+
 		PersonInfo[] persons = new PersonInfo[]{
-				new PersonInfo("name12", "01.12.1990"),
-				new PersonInfo("name2", "02.12.1990"),
-				new PersonInfo("name32", "03.12.1990"),
-				new PersonInfo("name14", "04.12.1990"),
-				new PersonInfo("name", "05.12.1990"),
-				new PersonInfo("name", "04.12.1990"),
-				new PersonInfo("name5", "07.12.1990"),
-				new PersonInfo("name16", "08.12.1990"),
-				new PersonInfo("name6", "09.12.1990"),
-				new PersonInfo("name66", "10.12.1990"),
-				new PersonInfo("name0", "11.12.1990"),
-				new PersonInfo("nam", "12.12.1990"),
-				new PersonInfo("na", "13.12.1990"),
-				new PersonInfo("name11", "14.12.1990"),
-				new PersonInfo("name101", "15.12.1990"),
-				new PersonInfo("name21", "16.12.1990"),
-				new PersonInfo("name4", "17.12.1990"),
-				new PersonInfo("test", "18.12.1990"),
-				new PersonInfo("ivanov", "19.12.1990"),
-				new PersonInfo("petrov", "10.12.1990"),
+				new PersonInfo("name12", dateFormat.parse("01 03 1985")),
+				new PersonInfo("name2", dateFormat.parse("02 03 1985")),
+				new PersonInfo("name32", dateFormat.parse("03 03 1985")),
+				new PersonInfo("name14", dateFormat.parse("04 03 1985")),
+				new PersonInfo("name", dateFormat.parse("05 03 1985")),
+				new PersonInfo("name", dateFormat.parse("04 03 1985")),
+				new PersonInfo("name5", dateFormat.parse("07 03 1985")),
+				new PersonInfo("name16", dateFormat.parse("08 03 1985")),
+				new PersonInfo("name6", dateFormat.parse("09 03 1985")),
+				new PersonInfo("name66", dateFormat.parse("10 03 1985")),
+				new PersonInfo("name0", dateFormat.parse("11 03 1985")),
+				new PersonInfo("nam", dateFormat.parse("12 03 1985")),
+				new PersonInfo("na", dateFormat.parse("13 03 1985")),
+				new PersonInfo("name11", dateFormat.parse("14 03 1985")),
+				new PersonInfo("name101", dateFormat.parse("15 03 1985")),
+				new PersonInfo("name21", dateFormat.parse("16 03 1985")),
+				new PersonInfo("name4", dateFormat.parse("17 03 1985")),
+				new PersonInfo("test", dateFormat.parse("18 03 1985")),
+				new PersonInfo("ivanov", dateFormat.parse("19 03 1985")),
+				new PersonInfo("petrov", dateFormat.parse("20 03 1985")),
 		};
 
         /*
@@ -90,9 +96,8 @@ public class Application {
          *    что массив отсортирован по возрастанию.
          */
         sort.sort(persons, 0, persons.length - 1);
-		PersonInfo[] newPersons = sort.getPersonInfoArray();
-		for(int i = 1; i < newPersons.length; i++){
-			System.out.println(newPersons[i].getName() + "\t\t" + newPersons[i].getBirthDate());
+		for(int i = 1; i < persons.length; i++){
+			System.out.println(persons[i].getName() + "\t\t" + persons[i].getBirthDate());
 		}
 
         /*
@@ -106,7 +111,7 @@ public class Application {
          *    что массив отсортирован по возрастанию.
          */
         sort.sort(strings);
-		System.out.println(Arrays.toString(sort.getComparable()));
+		System.out.println(Arrays.toString(strings));
 
         /*
          * TODO(Студент): Отсортируйте массив strings по убыванию
@@ -117,8 +122,7 @@ public class Application {
          * 2. С использованием отладчика убедитесь в том,
          *    что массив отсортирован по убыванию.
          */
-		Comparator<String> comp = (String::compareTo);
-		sort.sort(strings, comp.reversed());
+		sort.sort(strings, comparator);
 		System.out.println(Arrays.toString(strings));
     }
 

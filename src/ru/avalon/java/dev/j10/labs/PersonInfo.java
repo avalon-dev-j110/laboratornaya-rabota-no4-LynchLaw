@@ -1,27 +1,14 @@
 package ru.avalon.java.dev.j10.labs;
 
-import java.text.DateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 public class PersonInfo implements Person {
     private String name;
     private Date birthDate;
 
-    public PersonInfo(String name, String birthDate){
+    public PersonInfo(String name, Date birthDate){
         this.name = name;
-        try{
-            String[] date = birthDate.split("\\.");
-            Calendar calendar = Calendar.getInstance();
-            int y = Integer.parseInt(date[2]);
-            int m = Integer.parseInt(date[1]) - 1;
-            int d = Integer.parseInt(date[0]);
-            calendar.set(y, m, d);
-            this.birthDate = calendar.getTime();
-        }
-        catch(Exception ex){
-            System.out.println(ex.toString());
-        }
+        this.birthDate = birthDate;
     }
 
     @Override
